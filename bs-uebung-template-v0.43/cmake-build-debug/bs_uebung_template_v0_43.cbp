@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="bs_uebung_template_v0_43"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/xcsiv/Desktop/bs-uebung-template-v0.43/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/xcsiv/Desktop/bs-uebung-template-v0.43/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/xcsiv/Desktop/bs-uebung-template-v0.43/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/xcsiv/Desktop/bs-uebung-template-v0.43/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/xcsiv/Desktop/bs-uebung-template-v0.43/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/xcsiv/Desktop/bs-uebung-template-v0.43/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/xcsiv/Desktop/bs-uebung-template-v0.43/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/xcsiv/Desktop/bs-uebung-template-v0.43/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/xcsiv/Desktop/bs-uebung-template-v0.43/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/xcsiv/Desktop/bs-uebung-template-v0.43/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/xcsiv/Desktop/bs-uebung-template-v0.43/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/xcsiv/Desktop/bs-uebung-template-v0.43/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/xcsiv/Desktop/bs-uebung-template-v0.43/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/xcsiv/Desktop/bs-uebung-template-v0.43/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/xcsiv/Desktop/bs-uebung-template-v0.43/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="bs_uebung_template_v0_43">
+				<Option output="/home/xcsiv/Desktop/bs-uebung-template-v0.43/cmake-build-debug/bs_uebung_template_v0_43" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/xcsiv/Desktop/bs-uebung-template-v0.43/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/xcsiv/Desktop/bs-uebung-template-v0.43/."/>
+					<Add directory="/home/xcsiv/Desktop/bs-uebung-template-v0.43/includes"/>
+					<Add directory="/home/xcsiv/Desktop/bs-uebung-template-v0.43/obj"/>
+					<Add directory="/home/xcsiv/Desktop/bs-uebung-template-v0.43/src"/>
+					<Add directory="/home/xcsiv/Desktop/bs-uebung-template-v0.43/unittests"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/xcsiv/Desktop/bs-uebung-template-v0.43/cmake-build-debug/Makefile&quot;  VERBOSE=1 bs_uebung_template_v0_43"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/xcsiv/Desktop/bs-uebung-template-v0.43/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/xcsiv/Desktop/bs-uebung-template-v0.43/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/xcsiv/Desktop/bs-uebung-template-v0.43/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="bs_uebung_template_v0_43/fast">
+				<Option output="/home/xcsiv/Desktop/bs-uebung-template-v0.43/cmake-build-debug/bs_uebung_template_v0_43" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/xcsiv/Desktop/bs-uebung-template-v0.43/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/xcsiv/Desktop/bs-uebung-template-v0.43/."/>
+					<Add directory="/home/xcsiv/Desktop/bs-uebung-template-v0.43/includes"/>
+					<Add directory="/home/xcsiv/Desktop/bs-uebung-template-v0.43/obj"/>
+					<Add directory="/home/xcsiv/Desktop/bs-uebung-template-v0.43/src"/>
+					<Add directory="/home/xcsiv/Desktop/bs-uebung-template-v0.43/unittests"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/xcsiv/Desktop/bs-uebung-template-v0.43/cmake-build-debug/Makefile&quot;  VERBOSE=1 bs_uebung_template_v0_43/fast"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/xcsiv/Desktop/bs-uebung-template-v0.43/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/xcsiv/Desktop/bs-uebung-template-v0.43/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/xcsiv/Desktop/bs-uebung-template-v0.43/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/xcsiv/Desktop/bs-uebung-template-v0.43/CMakeLists.txt">
+			<Option target="bs_uebung_template_v0_43"/>
+		</Unit>
+		<Unit filename="/home/xcsiv/Desktop/bs-uebung-template-v0.43/Makefile">
+			<Option target="bs_uebung_template_v0_43"/>
+		</Unit>
+		<Unit filename="/home/xcsiv/Desktop/bs-uebung-template-v0.43/includes/blockdevice.h">
+			<Option target="bs_uebung_template_v0_43"/>
+		</Unit>
+		<Unit filename="/home/xcsiv/Desktop/bs-uebung-template-v0.43/includes/macros.h">
+			<Option target="bs_uebung_template_v0_43"/>
+		</Unit>
+		<Unit filename="/home/xcsiv/Desktop/bs-uebung-template-v0.43/includes/myfs-info.h">
+			<Option target="bs_uebung_template_v0_43"/>
+		</Unit>
+		<Unit filename="/home/xcsiv/Desktop/bs-uebung-template-v0.43/includes/myfs-structs.h">
+			<Option target="bs_uebung_template_v0_43"/>
+		</Unit>
+		<Unit filename="/home/xcsiv/Desktop/bs-uebung-template-v0.43/includes/myfs.h">
+			<Option target="bs_uebung_template_v0_43"/>
+		</Unit>
+		<Unit filename="/home/xcsiv/Desktop/bs-uebung-template-v0.43/includes/wrap.h">
+			<Option target="bs_uebung_template_v0_43"/>
+		</Unit>
+		<Unit filename="/home/xcsiv/Desktop/bs-uebung-template-v0.43/mkfs.myfs">
+			<Option target="bs_uebung_template_v0_43"/>
+		</Unit>
+		<Unit filename="/home/xcsiv/Desktop/bs-uebung-template-v0.43/mount.myfs">
+			<Option target="bs_uebung_template_v0_43"/>
+		</Unit>
+		<Unit filename="/home/xcsiv/Desktop/bs-uebung-template-v0.43/obj/blockdevice.o">
+			<Option target="bs_uebung_template_v0_43"/>
+		</Unit>
+		<Unit filename="/home/xcsiv/Desktop/bs-uebung-template-v0.43/obj/mkfs.myfs.o">
+			<Option target="bs_uebung_template_v0_43"/>
+		</Unit>
+		<Unit filename="/home/xcsiv/Desktop/bs-uebung-template-v0.43/obj/mount.myfs.o">
+			<Option target="bs_uebung_template_v0_43"/>
+		</Unit>
+		<Unit filename="/home/xcsiv/Desktop/bs-uebung-template-v0.43/obj/myfs.o">
+			<Option target="bs_uebung_template_v0_43"/>
+		</Unit>
+		<Unit filename="/home/xcsiv/Desktop/bs-uebung-template-v0.43/obj/wrap.o">
+			<Option target="bs_uebung_template_v0_43"/>
+		</Unit>
+		<Unit filename="/home/xcsiv/Desktop/bs-uebung-template-v0.43/src/blockdevice.cpp">
+			<Option target="bs_uebung_template_v0_43"/>
+		</Unit>
+		<Unit filename="/home/xcsiv/Desktop/bs-uebung-template-v0.43/src/mkfs.myfs.cpp">
+			<Option target="bs_uebung_template_v0_43"/>
+		</Unit>
+		<Unit filename="/home/xcsiv/Desktop/bs-uebung-template-v0.43/src/mount.myfs.c">
+			<Option target="bs_uebung_template_v0_43"/>
+		</Unit>
+		<Unit filename="/home/xcsiv/Desktop/bs-uebung-template-v0.43/src/myfs.cpp">
+			<Option target="bs_uebung_template_v0_43"/>
+		</Unit>
+		<Unit filename="/home/xcsiv/Desktop/bs-uebung-template-v0.43/src/wrap.cpp">
+			<Option target="bs_uebung_template_v0_43"/>
+		</Unit>
+		<Unit filename="/home/xcsiv/Desktop/bs-uebung-template-v0.43/unittests/catch.hpp">
+			<Option target="bs_uebung_template_v0_43"/>
+		</Unit>
+		<Unit filename="/home/xcsiv/Desktop/bs-uebung-template-v0.43/unittests/helper.cpp">
+			<Option target="bs_uebung_template_v0_43"/>
+		</Unit>
+		<Unit filename="/home/xcsiv/Desktop/bs-uebung-template-v0.43/unittests/helper.hpp">
+			<Option target="bs_uebung_template_v0_43"/>
+		</Unit>
+		<Unit filename="/home/xcsiv/Desktop/bs-uebung-template-v0.43/unittests/main.cpp">
+			<Option target="bs_uebung_template_v0_43"/>
+		</Unit>
+		<Unit filename="/home/xcsiv/Desktop/bs-uebung-template-v0.43/unittests/test-blockdevice.cpp">
+			<Option target="bs_uebung_template_v0_43"/>
+		</Unit>
+		<Unit filename="/home/xcsiv/Desktop/bs-uebung-template-v0.43/unittests/test-myfs.cpp">
+			<Option target="bs_uebung_template_v0_43"/>
+		</Unit>
+		<Unit filename="/home/xcsiv/Desktop/bs-uebung-template-v0.43/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
