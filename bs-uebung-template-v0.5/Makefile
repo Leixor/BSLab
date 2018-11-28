@@ -25,7 +25,7 @@ TARGETS = mount.myfs mkfs.myfs
 
 # object files for target mkfs.myfs TODO: add new object files here
 MKFS_MYFS_OBJS = $(OBJDIR)/blockdevice.o \
-	$(OBJDIR)/fat.o \
+	$(OBJDIR)/Fat.o \
 	$(OBJDIR)/myfs.o \
 	$(OBJDIR)/mkfs.myfs.o
 

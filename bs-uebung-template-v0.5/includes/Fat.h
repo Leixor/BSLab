@@ -2,12 +2,13 @@
 #define BLOCK_NUMBER 200
 #define FAT_EOF -1
 #include <stdint.h>
+use std;
 
-class fat
+class Fat
 {
 public:
-	fat(int test);
-	~fat();
+	Fat(int test);
+	~Fat();
 
 	uint32_t fatList[BLOCK_NUMBER];
 
