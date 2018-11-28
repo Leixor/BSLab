@@ -19,9 +19,9 @@
 		60A6602C207521C5005E273F /* test-blockdevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60A6601920752136005E273F /* test-blockdevice.cpp */; };
 		60A6602D207521C9005E273F /* test-myfs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60A6601A20752136005E273F /* test-myfs.cpp */; };
 		60A6602E20752230005E273F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60A6601820752136005E273F /* main.cpp */; };
-		842F567D21AEEA7000697D9D /* dmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 842F567C21AEEA7000697D9D /* dmap.cpp */; };
+		848B73A221AEF196005BB5DF /* dmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 848B73A121AEF196005BB5DF /* dmap.cpp */; };
+		848B73A421AEF206005BB5DF /* Fat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 848B73A321AEF206005BB5DF /* Fat.cpp */; };
 		84A39DA421A5B624002D0C33 /* RootDirectory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84A39DA221A5B624002D0C33 /* RootDirectory.cpp */; };
-		84DB597121AED7B3009CFB60 /* fat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84DB597021AED7B3009CFB60 /* fat.cpp */; };
 		84E3E99D21A5952800BC0E39 /* RootData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84E3E99B21A5952800BC0E39 /* RootData.cpp */; };
 /* End PBXBuildFile section */
 
@@ -76,12 +76,12 @@
 		60A6601920752136005E273F /* test-blockdevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-blockdevice.cpp"; sourceTree = "<group>"; };
 		60A6601A20752136005E273F /* test-myfs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-myfs.cpp"; sourceTree = "<group>"; };
 		60A6602320752194005E273F /* unittests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = unittests; sourceTree = BUILT_PRODUCTS_DIR; };
-		842F567C21AEEA7000697D9D /* dmap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dmap.cpp; path = "../../../../../../../../Desktop/Desktop/bs-uebung-template-v0.43/src/dmap.cpp"; sourceTree = "<group>"; };
+		848B73A121AEF196005BB5DF /* dmap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dmap.cpp; path = "../../../../../../../../Desktop/BSLab/bs-uebung-template-v0.5/src/dmap.cpp"; sourceTree = "<group>"; };
+		848B73A321AEF206005BB5DF /* Fat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Fat.cpp; sourceTree = "<group>"; };
 		84A39DA221A5B624002D0C33 /* RootDirectory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RootDirectory.cpp; sourceTree = "<group>"; };
 		84A39DA321A5B624002D0C33 /* RootDirectory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootDirectory.h; sourceTree = "<group>"; };
 		84DB596E21AEC7F2009CFB60 /* fat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fat.h; sourceTree = "<group>"; };
 		84DB596F21AED79E009CFB60 /* superblock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = superblock.h; sourceTree = "<group>"; };
-		84DB597021AED7B3009CFB60 /* fat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = fat.cpp; path = src/fat.cpp; sourceTree = SOURCE_ROOT; };
 		84DB597221AEE9DB009CFB60 /* dmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dmap.h; path = ../src/dmap.h; sourceTree = "<group>"; };
 		84E3E99B21A5952800BC0E39 /* RootData.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RootData.cpp; sourceTree = "<group>"; };
 		84E3E99C21A5952800BC0E39 /* RootData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootData.h; sourceTree = "<group>"; };
@@ -154,9 +154,9 @@
 			isa = PBXGroup;
 			children = (
 				60A65FEB20750BA2005E273F /* blockdevice.cpp */,
+				848B73A321AEF206005BB5DF /* Fat.cpp */,
 				84A39DA221A5B624002D0C33 /* RootDirectory.cpp */,
-				842F567C21AEEA7000697D9D /* dmap.cpp */,
-				84DB597021AED7B3009CFB60 /* fat.cpp */,
+				848B73A121AEF196005BB5DF /* dmap.cpp */,
 				84E3E99B21A5952800BC0E39 /* RootData.cpp */,
 				60A65FEC20750BA2005E273F /* mkfs.myfs.cpp */,
 				60A65FED20750BA2005E273F /* mount.myfs.c */,
@@ -278,10 +278,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				60A6600F20750C61005E273F /* myfs.cpp in Sources */,
+				848B73A421AEF206005BB5DF /* Fat.cpp in Sources */,
 				60A6600D20750C59005E273F /* mkfs.myfs.cpp in Sources */,
 				84A39DA421A5B624002D0C33 /* RootDirectory.cpp in Sources */,
-				842F567D21AEEA7000697D9D /* dmap.cpp in Sources */,
-				84DB597121AED7B3009CFB60 /* fat.cpp in Sources */,
+				848B73A221AEF196005BB5DF /* dmap.cpp in Sources */,
 				60A6600B20750C54005E273F /* blockdevice.cpp in Sources */,
 				84E3E99D21A5952800BC0E39 /* RootData.cpp in Sources */,
 			);
