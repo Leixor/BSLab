@@ -2,12 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Fat.cpp">
-   </FileRef>
-   <FileRef
-      location = "group:../../../../../../../../Desktop/BSLab/bs-uebung-template-v0.5/src/dmap.cpp">
-   </FileRef>
-   <FileRef
       location = "self:">
    </FileRef>
 </Workspace>
