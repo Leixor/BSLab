@@ -32,5 +32,6 @@ public:
     int write(u_int32_t blockNo, char *buffer);
     uint32_t getSize();
 };
+// Added comment
 
 #endif /* blockdevice_h */
