@@ -11,7 +11,7 @@ fat::~fat()
 {
 }
 
-uint32_t fat::setNextBlock(uint32_t currentBlock, uint32_t nextBlock)
+void fat::setNextBlock(uint32_t currentBlock, uint32_t nextBlock)
 {
 	this->fatList[currentBlock] = nextBlock;
 }
