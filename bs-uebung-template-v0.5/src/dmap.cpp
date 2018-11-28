@@ -10,7 +10,7 @@ DMap::DMap() {
 	// Beim Mounten des FS müssen diese Werte aus Containerdatei gelesen werden -> Dafür neue Methode
 	for(int i = 0; i < NUMBER_OF_FIELD_ELEMENTS; i++){ 
 		// Frei = 0; Belegt != 0;
-		allocated[i] = 0; // Entspricht Zustand frei für 32 Blöcke
+		this->allocated[i] = 0; // Entspricht Zustand frei für 32 Blöcke
 	}
 }
 
@@ -20,7 +20,7 @@ void DMap::setBlockAllocated(int blocknr){
 	// An welcher Stelle des uInt befindet sich der Belegungsindikator
 	int bitposition = blocknr % 32;
 	// Setzen des Bits an der richtigen Stelle
-	allocated[elementnr] = allocated[elementnr] | (1 << bitposition);
+	this->allocated[elementnr] = this->allocated[elementnr] | (1 << bitposition);
 	
 }
 
@@ -30,11 +30,11 @@ bool DMap::isBlockAllocated(int blocknr){
 	// An welcher Stelle des uInt befindet sich der Belegungsindikator
 	int bitposition = blocknr % 32;
 	// Prüfen des Bits an der richtigen Stelle
-	return (0 != (allocated[elementnr] & (1 << bitposition))); // Siehe Softwareprojekt Sem. 2 Aufg. 1
+	return (0 != (this->allocated[elementnr] & (1 << bitposition))); // Siehe Softwareprojekt Sem. 2 Aufg. 1
 }
 
 uint32_t* DMap::getDMap(){
-	return allocated;
+	return this->allocated;
 }
 
 // BESPRECHEN:
