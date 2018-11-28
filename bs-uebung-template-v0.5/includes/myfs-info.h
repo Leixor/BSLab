@@ -12,8 +12,8 @@
 #define myfs_info_h
 
 struct MyFsInfo {
-    char *logFile;
-    char *contFile;
+	char *logFile;
+	char *contFile;
 };
 
 #endif /* myfs_info_h */

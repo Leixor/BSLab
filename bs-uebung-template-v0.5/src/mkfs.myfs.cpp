@@ -9,6 +9,7 @@
 #include "myfs.h"
 #include "blockdevice.h"
 #include "macros.h"
+#include "fat.h"
 
 #define numberOfDataBlocks 62500
 
@@ -16,15 +17,18 @@
 
 
 
-int main(int argc, char *argv[]) {
-    // TODO: Implement file system generation & copying of files here
-    BlockDevice *device = new BlockDevice();
-    
-    
-    
-    //Erstellt neues device mit path  der im Terminal übergeben wird
-    device->create(argv[1]);
-    
-    
-    return 0;
+int main(int argc, char *argv[])
+{
+	// TODO: Implement file system generation & copying of files here
+	BlockDevice *device = new BlockDevice();
+
+	fat* fat = new fat(5);
+
+
+
+	//Erstellt neues device mit path  der im Terminal übergeben wird
+	device->create(argv[1]);
+
+
+	return 0;
 }

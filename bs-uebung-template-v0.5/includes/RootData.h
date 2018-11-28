@@ -13,22 +13,22 @@
 #include <stdint.h>
 #include <sys/stat.h>
 
-enum Mode{
+enum Mode {
     READ = 4,
     WRITE = 2,
     EXECUTE = 1
 };
 
-struct RootData{
-    char* name;
-    u_int32_t size;
-    u_int32_t group;
-    u_int32_t user;
-    u_int32_t mode;
-    time_t atime;
-    time_t mtime;
-    time_t ctime;
-    u_int32_t firstBlock;
+struct RootData {
+	char* name;
+	u_int32_t size;
+	u_int32_t group;
+	u_int32_t user;
+	u_int32_t mode;
+	time_t atime;
+	time_t mtime;
+	time_t ctime;
+	u_int32_t firstBlock;
 };
 
 #endif /* rootData_hpp */

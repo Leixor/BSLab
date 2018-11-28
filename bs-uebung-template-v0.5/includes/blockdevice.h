@@ -16,21 +16,22 @@
 
 #define BD_BLOCK_SIZE 512
 
-class BlockDevice {
+class BlockDevice
+{
 private:
-    uint32_t blockSize;
-    int contFile;
-    uint32_t size;
-    
+	uint32_t blockSize;
+	int contFile;
+	uint32_t size;
+
 public:
-    BlockDevice(u_int32_t blockSize = 512);
-    void resize(u_int32_t blockSize);
-    int open(const char* path);
-    int create(const char* path);
-    int close();
-    int read(u_int32_t blockNo, char *buffer);
-    int write(u_int32_t blockNo, char *buffer);
-    uint32_t getSize();
+	BlockDevice(u_int32_t blockSize = 512);
+	void resize(u_int32_t blockSize);
+	int open(const char* path);
+	int create(const char* path);
+	int close();
+	int read(u_int32_t blockNo, char *buffer);
+	int write(u_int32_t blockNo, char *buffer);
+	uint32_t getSize();
 };
 // Added comment
 

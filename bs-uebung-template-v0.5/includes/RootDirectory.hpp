@@ -12,8 +12,9 @@
 #include <stdio.h>
 #include "RootData.h"
 
-class RootDirectory{
-    RootData directory[64];
+class RootDirectory
+{
+	RootData directory[64];
 };
 
 
