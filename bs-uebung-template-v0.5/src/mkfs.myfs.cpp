@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 	// TODO: Implement file system generation & copying of files here
 	BlockDevice *device = new BlockDevice();
 
-	fat* fat = new fat(5);
+	fat* fat_object = new fat(5);
 
 
 
