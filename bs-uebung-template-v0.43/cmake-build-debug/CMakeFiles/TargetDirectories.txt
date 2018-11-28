@@ -1,3 +1,0 @@
-/home/xcsiv/Desktop/bs-uebung-template-v0.43/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/xcsiv/Desktop/bs-uebung-template-v0.43/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/xcsiv/Desktop/bs-uebung-template-v0.43/cmake-build-debug/CMakeFiles/bs_uebung_template_v0_43.dir
