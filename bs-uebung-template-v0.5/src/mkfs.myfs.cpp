@@ -21,6 +21,7 @@ int main(int argc, char *argv[])
 	// TODO: Implement file system generation & copying of files here
 	BlockDevice *device = new BlockDevice();
 
+	MyFS* filesystem = MyFS::Instance();
 
 
 

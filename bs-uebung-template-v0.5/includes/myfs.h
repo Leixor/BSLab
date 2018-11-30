@@ -21,6 +21,7 @@ private:
 	static MyFS *_instance;
 	FILE *logFile;
 
+
 public:
 	static MyFS *Instance();
 
