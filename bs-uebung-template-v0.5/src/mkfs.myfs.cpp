@@ -21,10 +21,12 @@ int main(int argc, char *argv[])
 	// TODO: Implement file system generation & copying of files here
 	BlockDevice *device = new BlockDevice();
 
-	MyFS* filesystem = MyFS::Instance();
+
 
 	//Erstellt neues device mit path  der im Terminal übergeben wird
 	device->create(argv[1]);
+
+	MyFS* filesystem = MyFS::Instance();
 
 
 	return 0;
