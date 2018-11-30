@@ -21,14 +21,14 @@ enum Mode {
 
 struct RootData {
 	char* name;
-	u_int32_t size;
-	u_int32_t group;
-	u_int32_t user;
-	u_int32_t mode;
+	uint32_t size;
+	uint32_t group;
+	uint32_t user;
+	uint32_t mode;
 	time_t atime;
 	time_t mtime;
 	time_t ctime;
-	u_int32_t firstBlock;
+	uint32_t firstBlock;
 };
 
 #endif /* rootData_hpp */
