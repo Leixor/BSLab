@@ -1,6 +1,6 @@
 #include "Fat.h"
 
-Fat::fat(int test)
+Fat::Fat()
 {
 	for (int i = 0; i < BLOCK_NUMBER; i++) {
 		this->fatList[i] = FAT_EOF;
@@ -21,9 +21,9 @@ uint32_t Fat::getNextBlock(uint32_t currentBlock)
 	return this->fatList[currentBlock];
 }
 
-std::vector<int> Fat::getAllBlocks(uint32_t startBlock)
+std::vector<uint32_t> Fat::getAllBlocks(uint32_t startBlock)
 {
-	std::vector<int> blocks{startBlock};
+	std::vector<uint32_t> blocks{startBlock};
 	
 	uint32_t currentBlock = startBlock;
 	

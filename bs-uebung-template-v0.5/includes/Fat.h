@@ -2,6 +2,8 @@
 #define BLOCK_NUMBER 200
 #define FAT_EOF -1
 #include <stdint.h>
+#include <vector>
+
 using namespace std;
 class Fat
 {
