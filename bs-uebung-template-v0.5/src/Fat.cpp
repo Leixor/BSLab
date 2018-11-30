@@ -27,9 +27,9 @@ std::vector<uint32_t> Fat::getAllBlocks(uint32_t startBlock)
 	
 	uint32_t currentBlock = startBlock;
 	
-	while(this->getNextBlock() != FAT_EOF)
+	while(this->getNextBlock(currentBlock) != FAT_EOF)
 	{
-		blocks.insert(this->getNextBlock(currentBlock));
+		blocks.push_back(this->getNextBlock(currentBlock));
 		currentBlock = this->getNextBlock(currentBlock);
 	}
 	
