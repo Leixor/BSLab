@@ -29,6 +29,7 @@ MKFS_MYFS_OBJS = $(OBJDIR)/blockdevice.o \
 	$(OBJDIR)/RootData.o \
 	$(OBJDIR)/Dmap.o \
 	$(OBJDIR)/Superblock.o \
+	$(OBJDIR)/BlockDeviceHelper.o \
 	$(OBJDIR)/Fat.o \
     $(OBJDIR)/myfs.o \
     $(OBJDIR)/mkfs.myfs.o
