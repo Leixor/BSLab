@@ -14,18 +14,28 @@
 
 #include "blockdevice.h"
 #include "myfs-structs.h"
+#include "Superblock.h"
+#include "Dmap.h"
+#include "Fat.h"
+#include "RootDirectory.h"
+#include "RootData.h"
 
 class MyFS
 {
 private:
 	static MyFS *_instance;
-	FILE *logFile;
+	FILE logFile;
+
 
 
 public:
 	static MyFS *Instance();
 
 	// TODO: Add attributes of your file system here
+	Superblock superblock;
+	Dmap dmap;
+	Fat fat;
+	RootDirectory rootDirectory;
 
 	MyFS();
 	~MyFS();
