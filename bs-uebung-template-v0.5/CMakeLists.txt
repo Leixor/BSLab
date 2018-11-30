@@ -10,7 +10,12 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 set(MKFS
         src/mkfs.myfs.cpp
-        src/blockdevice.cpp)
+        src/blockdevice.cpp
+        src/dmap.cpp
+        src/Fat.cpp
+        src/RootData.cpp
+        src/RootDirectory.cpp)
+
 
 set(MOUNT
         src/blockdevice.cpp
