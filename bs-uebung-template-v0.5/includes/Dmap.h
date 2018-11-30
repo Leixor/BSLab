@@ -1,5 +1,5 @@
-#ifndef dmap_h
-#define dmap_h
+#ifndef Dmap_h
+#define Dmap_h
 
 #include <stdio.h>
 #include <cstdint>
@@ -24,4 +24,4 @@ public:
 
 };
 
-#endif /* dmap_h */
+#endif /* Dmap_h */

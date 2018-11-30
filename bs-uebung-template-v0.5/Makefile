@@ -27,7 +27,8 @@ TARGETS = mount.myfs mkfs.myfs
 MKFS_MYFS_OBJS = $(OBJDIR)/blockdevice.o \
 	$(OBJDIR)/RootDirectory.o \
 	$(OBJDIR)/RootData.o \
-	$(OBJDIR)/dmap.o \
+	$(OBJDIR)/Dmap.o \
+	$(OBJDIR)/Superblock.o \
 	$(OBJDIR)/Fat.o \
     $(OBJDIR)/myfs.o \
     $(OBJDIR)/mkfs.myfs.o

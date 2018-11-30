@@ -22,9 +22,6 @@ int main(int argc, char *argv[])
 	BlockDevice *device = new BlockDevice();
 
 
-
-
-
 	//Erstellt neues device mit path  der im Terminal übergeben wird
 	device->create(argv[1]);
 

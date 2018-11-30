@@ -1,11 +1,11 @@
 //
-//  superblock.h
+//  Superblock.h
 //  mkfs.myfs
 //
 //  Created by Michael Martel on 26.11.18.
 //
-#ifndef superblock_h
-#define superblock_h
+#ifndef Superblock_h
+#define Superblock_h
 
 #include <stdio.h>
 #include <stdint.h>
@@ -24,4 +24,4 @@ struct SuperBlock {
     time_t change_time;
 };
 
-#endif // superblock_h
+#endif // Superblock_h
