@@ -49,3 +49,8 @@ bool addToRootDirectory(RootData data, int index = -1){
     }
     return false;
 }
+
+RootData* RootDirectory::getRootDirectory()
+{
+    return this->directory;
+}

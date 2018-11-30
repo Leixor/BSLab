@@ -9,8 +9,18 @@
 #include "myfs.h"
 #include "blockdevice.h"
 #include "macros.h"
+#include "Fat.h"
+#include "Dmap.h"
+#include "Superblock.h"
+#include "RootDirectory.h"
+#include "BlockDeviceHelper.h"
 
 #define numberOfDataBlocks 62500
+
+#define SUPER_BLOCK_START 0
+#define DMAP_SIZE
+#define FAT_SIZE
+#define ROOT_DIRECTORY_SIZE
 
 
 
@@ -19,14 +29,22 @@
 int main(int argc, char *argv[])
 {
 	// TODO: Implement file system generation & copying of files here
-	BlockDevice *device = new BlockDevice();
+	BlockDevice* blockDevice = new BlockDevice();
+	Superblock* superblock = new Superblock();
+	Dmap* dmap = new Dmap();
+	Fat* fat = new Fat();
+	RootDirectory rootDirectory = new RootDirectory();
 
-
-
-	//Erstellt neues device mit path  der im Terminal übergeben wird
+	BlockDeviceHelper* blockDeviceHelper = new BlockDeviceHelper(blockDevice);
 	device->create(argv[1]);
 
-	MyFS* filesystem = MyFS::Instance();
+	if (argc > 1) {
+		uint32_t dmapStart = blockDeviceHelper->writeDevice(0, superblock);
+		uint32_t fatStart = blockDeviceHelper->writeDevice(dmapStart, *dmap->getDmap());
+		uint32_t rootDirectoryStart = blockDeviceHelper->writeDevice(fatStart, *fat->getFat());
+		blockDeviceHelper->writeDevice(rootDirectoryStart, *rootDirectory->getRootDirectory());
+	}
+
 
 
 	return 0;

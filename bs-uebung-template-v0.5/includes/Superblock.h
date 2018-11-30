@@ -14,14 +14,14 @@
 struct SuperBlock {
     u_int32_t size;
     char name[256];
-    u_int32_t dmap_block;
-    u_int32_t fat_block;
-    u_int32_t rootdir_block;
+    u_int32_t dmapBlock;
+    u_int32_t fatBlock;
+    u_int32_t rootdirBlock;
 
     // Not sure if needed
     u_int32_t freeBlockCount;
-    u_int32_t first_free_block;
-    time_t change_time;
+    u_int32_t firstFreeBlock;
+    time_t changeTime;
 };
 
 #endif // Superblock_h

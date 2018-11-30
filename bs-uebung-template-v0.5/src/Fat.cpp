@@ -35,3 +35,8 @@ std::vector<uint32_t> Fat::getAllBlocks(uint32_t startBlock)
 	
 	return blocks;
 }
+
+uint32_t* Fat::getFat()
+{
+    return this->fatList;
+}

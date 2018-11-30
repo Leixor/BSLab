@@ -18,6 +18,7 @@ class RootDirectory
 	RootData directory[DIRECTORY_SIZE];
     
     RootData *getRootData(const char* path);
+    const RootData* getRootDirectory();
     
     int addToRootDirectory;
 };

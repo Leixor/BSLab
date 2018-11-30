@@ -20,8 +20,7 @@ public:
 	DMap();
 	void setBlockAllocated(int blocknbr);
 	bool isBlockAllocated(int blocknbr);
-	uint32_t* getDMap();
-
+	const uint32_t* getDMap();
 };
 
 #endif /* Dmap_h */

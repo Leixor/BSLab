@@ -37,7 +37,7 @@ public:
      * @param data The data that should be written.
      */
     template<class T>
-    void writeDevice(size_t block, const T &data) {
+    uint32_t writeDevice(size_t block, const T &data) {
         static_assert(std::is_trivially_copyable<T>::value, "Can't operate on complex types!");
 
         const char *rawData = reinterpret_cast<const char *>(&data);
@@ -50,6 +50,8 @@ public:
         }
         memcpy(buffer, rawData + ((currentBlock - block) * BLOCK_SIZE), sizeof(T) % BLOCK_SIZE);
         blockDevice.write(currentBlock, buffer);
+
+        return currentBlock;
     }
 
     /**
