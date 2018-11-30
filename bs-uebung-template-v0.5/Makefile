@@ -27,7 +27,7 @@ TARGETS = mount.myfs mkfs.myfs
 MKFS_MYFS_OBJS = $(OBJDIR)/blockdevice.o \
 	$(OBJDIR)/RootDirectory.o \
 	$(OBJDIR)/RootData.o \
-	$(OBJDIR)/fat.o \
+	$(OBJDIR)/dmap.o \
     $(OBJDIR)/myfs.o \
     $(OBJDIR)/mkfs.myfs.o
 
@@ -42,27 +42,27 @@ all: $(TARGETS)
 
 # link target mkfs.myfs
 mkfs.myfs: obj $(MKFS_MYFS_OBJS)
-    g++ $(LINKFLAGS) -o $@ $(MKFS_MYFS_OBJS) $(LIBS)
+	g++ $(LINKFLAGS) -o $@ $(MKFS_MYFS_OBJS) $(LIBS)
 
 # link target mount.myfs
 mount.myfs: obj $(MOUNT_MYFS_OBJS)
-    g++ $(LINKFLAGS) -o $@ $(MOUNT_MYFS_OBJS) $(LIBS)
-    
+	g++ $(LINKFLAGS) -o $@ $(MOUNT_MYFS_OBJS) $(LIBS)
+
 # clean by removing object dir
 clean:
-    rm -rf $(OBJDIR)
+	rm -rf $(OBJDIR)
 
 # make object directory
 $(OBJDIR):
-    mkdir -p $(OBJDIR)
+	mkdir -p $(OBJDIR)
 
 # compile c++ files with header dependency
 $(OBJDIR)/%.o :  $(SRCDIR)/%.cpp $(HEADERDIR)/*.h
-    g++ -c $(CPPFLAGS) -o $@  $<
+	g++ -c $(CPPFLAGS) -o $@  $<
 
-# compile c file with header dependency    
+# compile c file with header dependency
 $(OBJDIR)/%.o :  $(SRCDIR)/%.c $(HEADERDIR)/*.h
-    gcc -c $(CFLAGS) -o $@  $<
+	gcc -c $(CFLAGS) -o $@  $<
 
 ########## TESTING ##########
 
@@ -82,9 +82,9 @@ TTARGETS = unittests
 
 # compile test files without header dependency
 $(OBJDIR)/%.o : $(TSRCDIR)/%.cpp
-    g++ -c $(CPPFLAGS) -o $@  $<
+	g++ -c $(CPPFLAGS) -o $@  $<
 
 # link target testing
 unittest: obj $(UNITTEST_OBJS)
-    g++ $(LINKFLAGS) -o $@ $(UNITTEST_OBJS) $(LIBS)
+	g++ $(LINKFLAGS) -o $@ $(UNITTEST_OBJS) $(LIBS)
 
