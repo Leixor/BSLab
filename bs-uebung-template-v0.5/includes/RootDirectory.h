@@ -16,12 +16,15 @@
 class RootDirectory
 {
 	RootData directory[DIRECTORY_SIZE];
-    
+
+	public:
     RootData *getRootData(const char* path);
-    const RootData* getRootDirectory();
+    RootData* getRootDirectory();
     
-    int addToRootDirectory;
+    int addToRootDirectory(RootData data, int index);
 };
+
+
 
 
 #endif /* RootDirectory_hpp */

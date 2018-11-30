@@ -16,5 +16,5 @@ public:
 	void setNextBlock(uint32_t currentBlock, uint32_t nextBlock);
 	uint32_t getNextBlock(uint32_t currentBlock);
     std::vector<uint32_t> getAllBlocks(uint32_t startBlock);
-    const uint32_t* getFat();
+    uint32_t* getFat();
 };

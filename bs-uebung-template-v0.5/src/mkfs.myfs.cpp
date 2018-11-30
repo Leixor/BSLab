@@ -11,7 +11,7 @@
 #include "macros.h"
 #include "Fat.h"
 #include "Dmap.h"
-#include "Superblock.h"
+#include "SuperBlock.h"
 #include "RootDirectory.h"
 #include "BlockDeviceHelper.h"
 
@@ -29,18 +29,18 @@
 int main(int argc, char *argv[])
 {
 	// TODO: Implement file system generation & copying of files here
-	BlockDevice* blockDevice = new BlockDevice();
-	Superblock* superblock = new Superblock();
-	Dmap* dmap = new Dmap();
+	BlockDevice blockDevice = BlockDevice();
+	SuperBlock* superblock = new SuperBlock();
+	DMap* dmap = new DMap();
 	Fat* fat = new Fat();
-	RootDirectory rootDirectory = new RootDirectory();
+	RootDirectory* rootDirectory = new RootDirectory();
 
 	BlockDeviceHelper* blockDeviceHelper = new BlockDeviceHelper(blockDevice);
-	device->create(argv[1]);
+	blockDevice.create(argv[1]);
 
 	if (argc > 1) {
 		uint32_t dmapStart = blockDeviceHelper->writeDevice(0, superblock);
-		uint32_t fatStart = blockDeviceHelper->writeDevice(dmapStart, *dmap->getDmap());
+		uint32_t fatStart = blockDeviceHelper->writeDevice(dmapStart, *dmap->getDMap());
 		uint32_t rootDirectoryStart = blockDeviceHelper->writeDevice(fatStart, *fat->getFat());
 		blockDeviceHelper->writeDevice(rootDirectoryStart, *rootDirectory->getRootDirectory());
 	}

@@ -10,14 +10,13 @@
 #include <string.h> //Neccessary for memcopy
 
 #include "blockdevice.h"
-#include "constants.h"
 
-class FilesystemIO {
+class BlockDeviceHelper {
 private:
     BlockDevice blockDevice;
-    Superblock superblock;
+    SuperBlock superblock;
     Fat fat;
-    Dmap dmap;
+    DMap dmap;
     RootDirectory rootDirectory;
 
 
@@ -37,10 +36,10 @@ public:
      * @param data The data that should be written.
      */
     template<class T>
-    uint32_t writeDevice(size_t block, const T &data) {
+    uint32_t writeDevice(size_t block, T &data) {
         static_assert(std::is_trivially_copyable<T>::value, "Can't operate on complex types!");
 
-        const char *rawData = reinterpret_cast<const char *>(&data);
+        char *rawData = reinterpret_cast<char *>(&data);
 
         static char buffer[BLOCK_SIZE];
         size_t blockCount = sizeof(T) / BLOCK_SIZE;
@@ -83,10 +82,10 @@ public:
      * @param data The data, an array, that should be written.
      */
     template<class T, size_t N>
-    void writeDevice(size_t block, const T (&data)[N]) {
+    void writeDevice(size_t block, T (&data)[N]) {
         static_assert(std::is_trivially_copyable<T>::value, "Can't operate on complex types!");
 
-        const char *rawData = reinterpret_cast<const char *>(&data);
+        char *rawData = reinterpret_cast<char *>(&data);
 
         static char buffer[BLOCK_SIZE];
         size_t blockCount = (sizeof(T) * N)/ BLOCK_SIZE;

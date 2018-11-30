@@ -11,7 +11,7 @@ OBJDIR = obj
 CFLAGS = -g -Wall -I$(HEADERDIR) -DFUSE_USE_VERSION=26 `pkg-config fuse --cflags`
 
 # c++ compiler flags
-CPPFLAGS = -std=c++11 -g -Wall -I$(HEADERDIR) -DFUSE_USE_VERSION=26 `pkg-config fuse --cflags`
+CPPFLAGS = -std=gnu++11 -g -Wall -I$(HEADERDIR) -DFUSE_USE_VERSION=26 `pkg-config fuse --cflags`
 
 # linker flags
 LINKFLAGS = -g -Wall
@@ -28,8 +28,6 @@ MKFS_MYFS_OBJS = $(OBJDIR)/blockdevice.o \
 	$(OBJDIR)/RootDirectory.o \
 	$(OBJDIR)/RootData.o \
 	$(OBJDIR)/Dmap.o \
-	$(OBJDIR)/Superblock.o \
-	$(OBJDIR)/BlockDeviceHelper.o \
 	$(OBJDIR)/Fat.o \
     $(OBJDIR)/myfs.o \
     $(OBJDIR)/mkfs.myfs.o
