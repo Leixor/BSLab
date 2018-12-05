@@ -14,8 +14,10 @@
 #include "SuperBlock.h"
 #include "RootDirectory.h"
 #include "BlockDeviceHelper.h"
+#include "RootData.h"
 #include <iostream>
 #include <fstream>
+#include <unistd.h>
 
 #include <stdio.h>
 #include "constants.h"
@@ -42,20 +44,57 @@ int main(int argc, char *argv[])
 
 	uint32_t rootDirectoryBlockCount = (sizeof(rootDirectory->getRootDirectory()) * ROOT_DIRECTORY_SIZE) / 512;
 
-	if (argc > 1) {
-		uint32_t dmapStart = blockDeviceHelper->writeDevice(0, superblock, superBlockCount);
-		uint32_t fatStart = blockDeviceHelper->writeDevice(dmapStart, *dmap->getDMap(), dmapBlockCount);
-		uint32_t rootDirectoryStart = blockDeviceHelper->writeDevice(fatStart, *fat->getFat(), fatBlockCount);
-		blockDeviceHelper->writeDevice(rootDirectoryStart, *rootDirectory->getRootDirectory(), rootDirectoryBlockCount);
+	if (argc == 2) {
+		//uint32_t dmapStart = blockDeviceHelper->writeDevice(0, superblock, superBlockCount);
+		//uint32_t fatStart = blockDeviceHelper->writeDevice(dmapStart, *dmap->getDMap(), dmapBlockCount);
+		//uint32_t rootDirectoryStart = blockDeviceHelper->writeDevice(fatStart, *fat->getFat(), fatBlockCount);
+		//blockDeviceHelper->writeDevice(rootDirectoryStart, *rootDirectory->getRootDirectory(), rootDirectoryBlockCount);
 	} else if(argc > 2) {
 		for (int i = 2; i < argc; i++) {
-			ofstream file(argv[v], ios::out);
-			if(file.is_open()) {
+			char* filename = argv[i];
+			int fileDescriptor = open(filename, O_RDONLY);
+
+			if (fileDescriptor == -1) {
 
 			} else {
-				printf("Couldnt open file.");
+				char buffer[BLOCK_SIZE];
+				rootDirectory->
+				RootData rootData();
+				rootData.name = filename;
+				rootData.mode = 4;
+
+                uint32_t firstBlock = dmap->getFreeBlock()
+				ssize_t fileStream = read(fileDescriptor, buffer, BLOCK_SIZE);
+
+				uint32_t nextBlock = dmap->get;
+
+				while(fileStream > 0) {
+					nextBlock = blockDeviceHelper->writeDevice(nextBlock, buffer, 0);
+					fileStream = read(fileDescriptor, buffer, BLOCK_SIZE);
+					rootData.size += fileStream;
+				}
 			}
+
+
+
+			// READ FILE
+
+			// ADD TO ROOT_DIRECTORY
+
+			// GET ROOT DATA ENTRY
+
+			// WRITE BLOCKS
+				// ADD EVERYTHING ROOT DATA
+				// CHECK IN DMAP
+				// ADD TO DMAP
+				// ADD TO FAT
 		}
+
+		//uint32_t dmapStart = blockDeviceHelper->writeDevice(0, superblock, superBlockCount);
+		//uint32_t fatStart = blockDeviceHelper->writeDevice(dmapStart, *dmap->getDMap(), dmapBlockCount);
+		//uint32_t rootDirectoryStart = blockDeviceHelper->writeDevice(fatStart, *fat->getFat(), fatBlockCount);
+		//blockDeviceHelper->writeDevice(rootDirectoryStart, *rootDirectory->getRootDirectory(), rootDirectoryBlockCount);
+
 	}
 
 	return 0;

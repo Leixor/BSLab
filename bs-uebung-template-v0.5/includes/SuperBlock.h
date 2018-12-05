@@ -17,8 +17,6 @@ struct SuperBlock {
     u_int32_t dmapBlock;
     u_int32_t fatBlock;
     u_int32_t rootdirBlock;
-
-    // Not sure if needed
     u_int32_t freeBlockCount;
     u_int32_t firstFreeBlock;
     time_t changeTime;
