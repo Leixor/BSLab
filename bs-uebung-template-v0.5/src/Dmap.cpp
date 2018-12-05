@@ -33,12 +33,14 @@ bool DMap::isBlockAllocated(int blocknr){
 	return (0 != (this->allocated[elementnr] & (1 << bitposition))); // Siehe Softwareprojekt Sem. 2 Aufg. 1
 }
 
-int DMap::getNextFreeBlock(){
+int DMap::getNextFreeBlock(int offset){
 	for(int i = 0; i < DMAP_SIZE; i++){
-		if(this->isBlockAllocated(i)){
-			return i;
+		if(!this->isBlockAllocated(i)){
+			// TODO: 508 dynamisch bestimmen
+			return i + 508;
 		}
 	}
+
 	return -1;
 }
 

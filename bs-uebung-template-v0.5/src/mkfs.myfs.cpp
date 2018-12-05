@@ -44,6 +44,8 @@ int main(int argc, char *argv[])
 
 	uint32_t rootDirectoryBlockCount = (sizeof(rootDirectory->getRootDirectory()) * ROOT_DIRECTORY_SIZE) / 512;
 
+	uint32_t firstBlock = superBlockCount + fatBlockCount + dmapBlockCount + rootDirectoryBlockCount +4;
+	printf("%d", firstBlock);
 	if (argc == 2) {
 		//uint32_t dmapStart = blockDeviceHelper->writeDevice(0, superblock, superBlockCount);
 		//uint32_t fatStart = blockDeviceHelper->writeDevice(dmapStart, *dmap->getDMap(), dmapBlockCount);
@@ -58,21 +60,37 @@ int main(int argc, char *argv[])
 
 			} else {
 				char buffer[BLOCK_SIZE];
-				rootDirectory->
-				RootData rootData();
+				RootData rootData =  RootData();
 				rootData.name = filename;
 				rootData.mode = 4;
 
-                uint32_t firstBlock = dmap->getFreeBlock()
 				ssize_t fileStream = read(fileDescriptor, buffer, BLOCK_SIZE);
 
-				uint32_t nextBlock = dmap->get;
+				uint32_t nextBlock = dmap->getNextFreeBlock(firstBlock);
+				uint32_t currentBlock;
+
+				if (nextBlock == -1) {
+					return -1;
+				}
+
 
 				while(fileStream > 0) {
-					nextBlock = blockDeviceHelper->writeDevice(nextBlock, buffer, 0);
-					fileStream = read(fileDescriptor, buffer, BLOCK_SIZE);
+					blockDeviceHelper->writeDevice(nextBlock, buffer, 0);
+					dmap->setBlockAllocated(nextBlock);
+
+					currentBlock = nextBlock;
+
+					nextBlock = dmap->getNextFreeBlock(firstBlock);
+
+					fat->setNextBlock(currentBlock, nextBlock);
+
 					rootData.size += fileStream;
+					fileStream = read(fileDescriptor, buffer, BLOCK_SIZE);
 				}
+
+				fat->setNextBlock(currentBlock, FAT_EOF);
+
+				rootDirectory->addToRootDirectory(rootData, -1);
 			}
 
 
@@ -90,10 +108,10 @@ int main(int argc, char *argv[])
 				// ADD TO FAT
 		}
 
-		//uint32_t dmapStart = blockDeviceHelper->writeDevice(0, superblock, superBlockCount);
-		//uint32_t fatStart = blockDeviceHelper->writeDevice(dmapStart, *dmap->getDMap(), dmapBlockCount);
-		//uint32_t rootDirectoryStart = blockDeviceHelper->writeDevice(fatStart, *fat->getFat(), fatBlockCount);
-		//blockDeviceHelper->writeDevice(rootDirectoryStart, *rootDirectory->getRootDirectory(), rootDirectoryBlockCount);
+		uint32_t dmapStart = blockDeviceHelper->writeDevice(0, superblock, superBlockCount);
+		uint32_t fatStart = blockDeviceHelper->writeDevice(dmapStart, *dmap->getDMap(), dmapBlockCount);
+		uint32_t rootDirectoryStart = blockDeviceHelper->writeDevice(fatStart, *fat->getFat(), fatBlockCount);
+		blockDeviceHelper->writeDevice(rootDirectoryStart, *rootDirectory->getRootDirectory(), rootDirectoryBlockCount);
 
 	}
 

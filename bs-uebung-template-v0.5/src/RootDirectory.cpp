@@ -35,7 +35,7 @@ RootData* getRootData(const char* path){
  
  *\return Bool shows if it worked or if directory is full
  */
-bool addToRootDirectory(RootData data, int index = -1){
+bool RootDirectory::addToRootDirectory(RootData data, int index){
     if (index >= 0 && index < ROOT_DIRECTORY_SIZE){
         directory[index] = data;
         return true;

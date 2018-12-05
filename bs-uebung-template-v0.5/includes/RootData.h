@@ -31,4 +31,4 @@ struct RootData {
 	uint32_t firstBlock;
 };
 
-#endif /* rootData_hpp */
+#endif /* rootData_h */

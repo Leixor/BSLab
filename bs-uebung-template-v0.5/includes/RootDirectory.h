@@ -20,7 +20,7 @@ class RootDirectory
     RootData *getRootData(const char* path);
     RootData* getRootDirectory();
     
-    int addToRootDirectory(RootData data, int index);
+    bool addToRootDirectory(RootData data, int index);
 };
 
 
