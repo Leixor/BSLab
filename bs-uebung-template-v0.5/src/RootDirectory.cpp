@@ -9,7 +9,7 @@
 #include "RootDirectory.h"
 #include <string>
 
-RootData directory[DIRECTORY_SIZE];
+RootData directory[ROOT_DIRECTORY_SIZE];
 
 /**
    * Gives you a RootData Object from the root directory
@@ -17,7 +17,7 @@ RootData directory[DIRECTORY_SIZE];
     * \param path The path or name of the file you want to get the root data of
  */
 RootData* getRootData(const char* path){
-    for(int i = 0; i < DIRECTORY_SIZE; i++){
+    for(int i = 0; i < ROOT_DIRECTORY_SIZE; i++){
         std::string name = directory[i].name;
         if(name.compare(path)){
             return &directory[i];
@@ -36,11 +36,11 @@ RootData* getRootData(const char* path){
  *\return Bool shows if it worked or if directory is full
  */
 bool addToRootDirectory(RootData data, int index = -1){
-    if (index >= 0 && index < DIRECTORY_SIZE){
+    if (index >= 0 && index < ROOT_DIRECTORY_SIZE){
         directory[index] = data;
         return true;
     }else{
-        for(int i = 0; i < DIRECTORY_SIZE; i++){
+        for(int i = 0; i < ROOT_DIRECTORY_SIZE; i++){
             if(directory[i].name == NULL){
                 directory[i] = data;
                 return true;

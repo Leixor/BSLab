@@ -8,14 +8,13 @@
 
 #ifndef RootDirectory_h
 #define RootDirectory_h
-#define DIRECTORY_SIZE 64
 
 #include <stdio.h>
 #include "RootData.h"
-
+#include "constants.h"
 class RootDirectory
 {
-	RootData directory[DIRECTORY_SIZE];
+	RootData directory[ROOT_DIRECTORY_SIZE];
 
 	public:
     RootData *getRootData(const char* path);

@@ -8,7 +8,7 @@
 DMap::DMap() { 
 	// Initialisierung wenn alle Blöcke frei sein sollen.
 	// Beim Mounten des FS müssen diese Werte aus Containerdatei gelesen werden -> Dafür neue Methode
-	for(int i = 0; i < NUMBER_OF_FIELD_ELEMENTS; i++){ 
+	for(int i = 0; i < NUMBER_OF_ELEMENTS; i++){
 		// Frei = 0; Belegt != 0;
 		this->allocated[i] = 0; // Entspricht Zustand frei für 32 Blöcke
 	}

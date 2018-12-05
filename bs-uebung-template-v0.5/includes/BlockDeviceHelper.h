@@ -8,12 +8,15 @@
 #include <stdlib.h>
 #include <type_traits> //Neccessary for is_trivially_copyable
 #include <string.h> //Neccessary for memcopy
+#define BLOCK_SIZE 512
 
 #include "blockdevice.h"
+#include <stdio.h>
+#include "constants.h"
 
 class BlockDeviceHelper {
 private:
-    BlockDevice blockDevice;
+    BlockDevice* blockDevice;
     SuperBlock superblock;
     Fat fat;
     DMap dmap;
@@ -25,8 +28,8 @@ public:
     /**
      * Creates a new IO-Interface for a blockdevice.
      */
-    BlockDeviceHelper(BlockDevice &blockdevice) {
-        blockDevice = blockdevice;
+    BlockDeviceHelper(BlockDevice* blockdevice) {
+        this->blockDevice = blockdevice;
     }
 
     /**
@@ -36,21 +39,21 @@ public:
      * @param data The data that should be written.
      */
     template<class T>
-    uint32_t writeDevice(size_t block, T &data) {
+    uint32_t writeDevice(size_t block, T &data, uint32_t blockCount) {
         static_assert(std::is_trivially_copyable<T>::value, "Can't operate on complex types!");
 
         char *rawData = reinterpret_cast<char *>(&data);
 
         static char buffer[BLOCK_SIZE];
-        size_t blockCount = sizeof(T) / BLOCK_SIZE;
         size_t currentBlock = block;
         for (; currentBlock < block + blockCount; ++currentBlock) {
-            blockDevice.write(currentBlock, rawData + ((currentBlock - block) * BLOCK_SIZE));
+            this->blockDevice->write(currentBlock, rawData + ((currentBlock - block) * BLOCK_SIZE));
         }
         memcpy(buffer, rawData + ((currentBlock - block) * BLOCK_SIZE), sizeof(T) % BLOCK_SIZE);
-        blockDevice.write(currentBlock, buffer);
+        this->blockDevice->write(currentBlock, buffer);
 
-        return currentBlock;
+
+        return ++currentBlock;
     }
 
     /**
@@ -68,9 +71,9 @@ public:
         std::size_t blockCount = sizeof(T) / BLOCK_SIZE;
         std::size_t currentBlock = block;
         for (; currentBlock < block + blockCount; ++currentBlock) {
-            blockDevice.read(currentBlock, rawData + ((currentBlock - block) * BLOCK_SIZE));
+            blockDevice->read(currentBlock, rawData + ((currentBlock - block) * BLOCK_SIZE));
         }
-        blockDevice.read(currentBlock, buffer);
+        blockDevice->read(currentBlock, buffer);
         memcpy(rawData + ((currentBlock - block) * BLOCK_SIZE), buffer, sizeof(T) % BLOCK_SIZE);
     }
 
@@ -82,19 +85,18 @@ public:
      * @param data The data, an array, that should be written.
      */
     template<class T, size_t N>
-    void writeDevice(size_t block, T (&data)[N]) {
+    void writeDevice(BlockDevice* blockDevice, size_t block, T (&data)[N], uint32_t blockCount) {
         static_assert(std::is_trivially_copyable<T>::value, "Can't operate on complex types!");
 
         char *rawData = reinterpret_cast<char *>(&data);
 
         static char buffer[BLOCK_SIZE];
-        size_t blockCount = (sizeof(T) * N)/ BLOCK_SIZE;
         size_t currentBlock = block;
         for (; currentBlock < block + blockCount; ++currentBlock) {
-            blockDevice.write(currentBlock, rawData + ((currentBlock - block) * BLOCK_SIZE));
+            blockDevice->write(currentBlock, rawData + ((currentBlock - block) * BLOCK_SIZE));
         }
         memcpy(buffer, rawData + ((currentBlock - block) * BLOCK_SIZE), (sizeof(T) * N) % BLOCK_SIZE);
-        blockDevice.write(currentBlock, buffer);
+        blockDevice->write(currentBlock, buffer);
     }
 
     /**
@@ -113,9 +115,9 @@ public:
         std::size_t blockCount = (sizeof(T) * N) / BLOCK_SIZE;
         std::size_t currentBlock = block;
         for (; currentBlock < block + blockCount; ++currentBlock) {
-            blockDevice.read(currentBlock, rawData + ((currentBlock - block) * BLOCK_SIZE));
+            blockDevice->read(currentBlock, rawData + ((currentBlock - block) * BLOCK_SIZE));
         }
-        blockDevice.read(currentBlock, buffer);
+        blockDevice->read(currentBlock, buffer);
         memcpy(rawData + ((currentBlock - block) * BLOCK_SIZE), buffer, (sizeof(T) * N) % BLOCK_SIZE);
     }
 

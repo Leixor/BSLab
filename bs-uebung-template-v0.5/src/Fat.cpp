@@ -2,7 +2,7 @@
 
 Fat::Fat()
 {
-	for (int i = 0; i < BLOCK_NUMBER; i++) {
+	for (int i = 0; i < FAT_SIZE; i++) {
 		this->fatList[i] = FAT_EOF;
 	}
 }
