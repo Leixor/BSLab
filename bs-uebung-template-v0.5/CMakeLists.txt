@@ -11,25 +11,28 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(MKFS
         src/mkfs.myfs.cpp
         src/blockdevice.cpp
-        src/dmap.cpp
+        src/Dmap.cpp
         src/Fat.cpp
-        src/RootData.cpp
-        src/RootDirectory.cpp)
-
+        src/RootDirectory.cpp
+        src/RootData.cpp)
 
 set(MOUNT
         src/blockdevice.cpp
         src/myfs.cpp
         src/wrap.cpp
-        src/mount.myfs.c)
+        src/mount.myfs.c
+        src/Dmap.cpp
+        src/Fat.cpp
+        src/RootDirectory.cpp
+        src/RootData.cpp)
 
-set(unittests
-        src/blockdevice.cpp
-        src/myfs.cpp
-        unittests/main.cpp
-        unittests/test-blockdevice.cpp
-        unittests/test-myfs.cpp
-        unittests/helper.cpp)
+#set(unittests
+ #       src/blockdevice.cpp
+  #      src/myfs.cpp
+   #     unittests/main.cpp
+    #    unittests/test-blockdevice.cpp
+     #   unittests/test-myfs.cpp
+      #  unittests/helper.cpp)
 
 include_directories(includes)
 
@@ -39,7 +42,7 @@ add_definitions(${COMPILE_FLAGS})
 
 add_executable(mkfs.myfs ${MKFS})
 add_executable(mount.myfs ${MOUNT})
-add_executable(unittests ${UNITTESTS})
+#add_executable(unittests ${UNITTESTS})
 
 find_package(PkgConfig)
 pkg_check_modules(FUSE fuse)
@@ -52,6 +55,6 @@ target_link_libraries(mount.myfs ${FUSE_LDFLAGS})
 target_compile_options(mount.myfs PUBLIC ${FUSE_CFLAGS})
 target_include_directories(mount.myfs PUBLIC ${FUSE_INCLUDE_DIRS})
 
-target_link_libraries(unittests ${FUSE_LDFLAGS})
-target_compile_options(unittests PUBLIC ${FUSE_CFLAGS})
-target_include_directories(unittests PUBLIC ${FUSE_INCLUDE_DIRS})
+#target_link_libraries(unittests ${FUSE_LDFLAGS})
+#target_compile_options(unittests PUBLIC ${FUSE_CFLAGS})
+#target_include_directories(unittests PUBLIC ${FUSE_INCLUDE_DIRS})

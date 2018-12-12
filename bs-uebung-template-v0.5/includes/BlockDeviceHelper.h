@@ -17,11 +17,6 @@
 class BlockDeviceHelper {
 private:
     BlockDevice* blockDevice;
-    SuperBlock superblock;
-    Fat fat;
-    DMap dmap;
-    RootDirectory rootDirectory;
-
 
 public:
 
