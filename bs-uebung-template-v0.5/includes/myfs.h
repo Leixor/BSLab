@@ -14,11 +14,24 @@
 
 #include "blockdevice.h"
 #include "myfs-structs.h"
+#include "Fat.h"
+#include "Dmap.h"
+#include "SuperBlock.h"
+#include "RootDirectory.h"
+#include "BlockDeviceHelper.h"
+#include "RootData.h"
+#include "constants.h"
 
 class MyFS {
 private:
     static MyFS *_instance;
     FILE *logFile;
+    BlockDevice blockdevice;
+    BlockDeviceHelper* deviceHelper;
+    SuperBlock* superblock;
+    Fat* fat;
+    DMap* dmap;
+    RootDirectory* rootDir;
     
 public:
     static MyFS *Instance();

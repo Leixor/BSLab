@@ -31,6 +31,11 @@ MyFS* MyFS::Instance() {
 
 MyFS::MyFS() {
     this->logFile= stderr;
+    this->blockdevice = BlockDevice();
+    this->superblock = new SuperBlock();
+    this->dmap = new DMap();
+    this->fat = new Fat();
+    this->rootDir = new RootDirectory();
 }
 
 MyFS::~MyFS() {
@@ -180,6 +185,16 @@ int MyFS::fuseReaddir(const char *path, void *buf, fuse_fill_dir_t filler, off_t
     LOGM();
     
     // TODO: Implement this!
+    printf( "--> Getting The List of Files of %s\n", path );
+	
+	filler( buf, ".", NULL, 0 ); // Current Directory
+	filler( buf, "..", NULL, 0 ); // Parent Directory
+	
+	if ( strcmp( path, "/" ) == 0 ) // If the user is trying to show the files/directories of the root directory show the following
+	{
+		filler( buf, "file54", NULL, 0 );
+		filler( buf, "file349", NULL, 0 );
+    }
     
     RETURN(0);
     
@@ -222,7 +237,7 @@ void* MyFS::fuseInit(struct fuse_conn_info *conn) {
     if(this->logFile == NULL) {
         fprintf(stderr, "ERROR: Cannot open logfile %s\n", ((MyFsInfo *) fuse_get_context()->private_data)->logFile);
     } else {
-        //    this->logFile= ((MyFsInfo *) fuse_get_context()->private_data)->logFile;
+        //    this->logFile= ((MyFsInfo *) fuse_get_cont    ext()->private_data)->logFile;
         
         // turn of logfile buffering
         setvbuf(this->logFile, NULL, _IOLBF, 0);
@@ -233,7 +248,20 @@ void* MyFS::fuseInit(struct fuse_conn_info *conn) {
         // you can get the containfer file name here:
         LOGF("Container file name: %s", ((MyFsInfo *) fuse_get_context()->private_data)->contFile);
         
+        LOG("BEVOR");
         // TODO: Implement your initialization methods here!
+        blockdevice.open(((MyFsInfo *) fuse_get_context()->private_data)->contFile);
+        LOG("BEVOR");
+        deviceHelper = new BlockDeviceHelper(&blockdevice);
+        LOG("BEVOR");
+        deviceHelper->readDevice(0, superblock);
+        LOG("BEVOR");
+        deviceHelper->readDevice(superblock->dmapBlock, *dmap->getDMap());
+        LOG("DRIN");
+        deviceHelper->readDevice(superblock->fatBlock, *fat->getFat());
+        deviceHelper->readDevice(superblock->rootdirBlock, *rootDir->getRootDirectory());
+        
+        LOGF("Filename: %s", rootDir->getRootDirectory()[0].name);
     }
     
     RETURN(0);

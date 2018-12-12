@@ -10,18 +10,18 @@ DMap::DMap() {
 	// Beim Mounten des FS müssen diese Werte aus Containerdatei gelesen werden -> Dafür neue Methode
 	for(int i = 0; i < DMAP_SIZE; i++){
 		// Frei = 0; Belegt != 0;
-		this->allocated[i] = 0; // Entspricht Zustand frei für 32 Blöcke
+		this->allocated[i] = false; // Entspricht Zustand frei für 32 Blöcke
 	}
 }
 
 void DMap::setBlockAllocated(int blocknr){
 	// Setzen des Bits an der richtigen Stelle
-	this->allocated[blocknr] = 1;
+	this->allocated[blocknr] = true;
 }
 
 bool DMap::isBlockAllocated(int blocknr){
 	// Prüfen des Bits an der richtigen Stelle
-	return this->allocated[blocknr] == 1;
+	return this->allocated[blocknr];
 }
 
 int DMap::getNextFreeBlock(){
@@ -35,7 +35,7 @@ int DMap::getNextFreeBlock(){
 	return -1;
 }
 
-uint32_t* DMap::getDMap(){
+bool* DMap::getDMap(){
 	return this->allocated;
 }
 

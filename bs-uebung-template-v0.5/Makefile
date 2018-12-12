@@ -34,6 +34,10 @@ MKFS_MYFS_OBJS = $(OBJDIR)/blockdevice.o \
 
 # object files for target mount.myfs TODO: add new object files here
 MOUNT_MYFS_OBJS = $(OBJDIR)/blockdevice.o \
+	$(OBJDIR)/RootDirectory.o \
+	$(OBJDIR)/RootData.o \
+	$(OBJDIR)/Dmap.o \
+	$(OBJDIR)/Fat.o \
     $(OBJDIR)/myfs.o \
     $(OBJDIR)/wrap.o \
     $(OBJDIR)/mount.myfs.o
