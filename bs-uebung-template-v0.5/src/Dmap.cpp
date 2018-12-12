@@ -8,36 +8,27 @@
 DMap::DMap() { 
 	// Initialisierung wenn alle Blöcke frei sein sollen.
 	// Beim Mounten des FS müssen diese Werte aus Containerdatei gelesen werden -> Dafür neue Methode
-	for(int i = 0; i < NUMBER_OF_ELEMENTS; i++){
+	for(int i = 0; i < DMAP_SIZE; i++){
 		// Frei = 0; Belegt != 0;
 		this->allocated[i] = 0; // Entspricht Zustand frei für 32 Blöcke
 	}
 }
 
 void DMap::setBlockAllocated(int blocknr){
-	// In welchem Feldelement befinden sich der Belegungsindikator
-	int elementnr = blocknr / 32;
-	// An welcher Stelle des uInt befindet sich der Belegungsindikator
-	int bitposition = blocknr % 32;
 	// Setzen des Bits an der richtigen Stelle
-	this->allocated[elementnr] = this->allocated[elementnr] | (1 << bitposition);
-	
+	this->allocated[blocknr] = 1;
 }
 
 bool DMap::isBlockAllocated(int blocknr){
-	// In welchem Feldelement befinden sich der Belegungsindikator
-	int elementnr = blocknr / 32;
-	// An welcher Stelle des uInt befindet sich der Belegungsindikator
-	int bitposition = blocknr % 32;
 	// Prüfen des Bits an der richtigen Stelle
-	return (0 != (this->allocated[elementnr] & (1 << bitposition))); // Siehe Softwareprojekt Sem. 2 Aufg. 1
+	return this->allocated[blocknr] == 1;
 }
 
-int DMap::getNextFreeBlock(int offset){
+int DMap::getNextFreeBlock(){
 	for(int i = 0; i < DMAP_SIZE; i++){
 		if(!this->isBlockAllocated(i)){
 			// TODO: 508 dynamisch bestimmen
-			return i + 508;
+			return i;
 		}
 	}
 

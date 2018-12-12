@@ -44,13 +44,13 @@ int main(int argc, char *argv[])
 
 	uint32_t rootDirectoryBlockCount = (sizeof(rootDirectory->getRootDirectory()) * ROOT_DIRECTORY_SIZE) / 512;
 
-	uint32_t firstBlock = superBlockCount + fatBlockCount + dmapBlockCount + rootDirectoryBlockCount +4;
-	printf("%d", firstBlock);
+	uint32_t dataOffset = superBlockCount + fatBlockCount + dmapBlockCount + rootDirectoryBlockCount + 4;
+
 	if (argc == 2) {
-		//uint32_t dmapStart = blockDeviceHelper->writeDevice(0, superblock, superBlockCount);
-		//uint32_t fatStart = blockDeviceHelper->writeDevice(dmapStart, *dmap->getDMap(), dmapBlockCount);
-		//uint32_t rootDirectoryStart = blockDeviceHelper->writeDevice(fatStart, *fat->getFat(), fatBlockCount);
-		//blockDeviceHelper->writeDevice(rootDirectoryStart, *rootDirectory->getRootDirectory(), rootDirectoryBlockCount);
+		uint32_t dmapStart = blockDeviceHelper->writeDevice(0, superblock, superBlockCount);
+		uint32_t fatStart = blockDeviceHelper->writeDevice(dmapStart, *dmap->getDMap(), dmapBlockCount);
+		uint32_t rootDirectoryStart = blockDeviceHelper->writeDevice(fatStart, *fat->getFat(), fatBlockCount);
+		blockDeviceHelper->writeDevice(rootDirectoryStart, *rootDirectory->getRootDirectory(), rootDirectoryBlockCount);
 	} else if(argc > 2) {
 		for (int i = 2; i < argc; i++) {
 			char* filename = argv[i];
@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
 
 				ssize_t fileStream = read(fileDescriptor, buffer, BLOCK_SIZE);
 
-				uint32_t nextBlock = dmap->getNextFreeBlock(firstBlock);
+				uint32_t nextBlock = dmap->getNextFreeBlock();
 				uint32_t currentBlock;
 
 				if (nextBlock == -1) {
@@ -75,12 +75,12 @@ int main(int argc, char *argv[])
 
 
 				while(fileStream > 0) {
-					blockDeviceHelper->writeDevice(nextBlock, buffer, 0);
+					blockDeviceHelper->writeDevice(nextBlock + dataOffset, buffer, 0);
 					dmap->setBlockAllocated(nextBlock);
 
 					currentBlock = nextBlock;
 
-					nextBlock = dmap->getNextFreeBlock(firstBlock);
+					nextBlock = dmap->getNextFreeBlock();
 
 					fat->setNextBlock(currentBlock, nextBlock);
 

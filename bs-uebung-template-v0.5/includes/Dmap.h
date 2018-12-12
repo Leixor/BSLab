@@ -12,14 +12,14 @@
 
 class DMap {
 private:
-	uint32_t allocated[NUMBER_OF_ELEMENTS];
+	uint32_t allocated[DMAP_SIZE];
 
 public:
 	DMap();
 	void setBlockAllocated(int blocknbr);
 	bool isBlockAllocated(int blocknbr);
 	uint32_t* getDMap();
-	int getNextFreeBlock(int offset);
+	int getNextFreeBlock();
 };
 
 #endif /* Dmap_h */
